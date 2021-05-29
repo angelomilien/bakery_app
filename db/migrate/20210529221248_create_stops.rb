@@ -4,6 +4,7 @@ class CreateStops < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :adresse
       t.string :phone_number
+      t.timestamps null: false
     end
   end
 end

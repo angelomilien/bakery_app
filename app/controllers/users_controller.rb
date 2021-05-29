@@ -4,3 +4,5 @@ class UsersController < ApplicationController
         erb :'registrations/signup'
     end
 end
+
+# :layout => false
