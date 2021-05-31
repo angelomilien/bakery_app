@@ -10,11 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_221248) do
+ActiveRecord::Schema.define(version: 2021_05_30_122350) do
 
   create_table "bakeries", force: :cascade do |t|
     t.string "name"
     t.string "addresse"
+  end
+
+  create_table "breads", force: :cascade do |t|
+    t.string "type"
+    t.string "sale_form"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "routes", force: :cascade do |t|
@@ -35,4 +49,5 @@ ActiveRecord::Schema.define(version: 2021_05_29_221248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end

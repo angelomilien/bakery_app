@@ -1,0 +1,93 @@
+@media screen {
+ 
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+  
+    body {
+      background-color: lightblue;
+      color: #333;
+      font-family: Sans-Serif;
+      line-height: 18px;
+    }
+  
+    .wrapper {
+      text-align: center;
+      background: #fff;
+      -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+      -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+      box-shadow: 0 0 10px rgba(0,0,0,.3);
+      margin: 16px auto;
+      max-width: 960px;
+      padding: 2.25%; /* 18px / 800px */
+      width: 85%;
+    }
+  /* Signup and login in home.rb*/
+    .form_1 {
+      display: inline;
+      margin: 8px;
+    }
+  
+    .button_1 {
+      height:2%;
+      width:6%;
+    }
+
+    /* Signup in signup.erb*/
+    .input_1 {
+      display: block;
+      margin : 0 auto;
+      margin-top: 2px;
+     }
+   
+     /* Login in login.erb*/
+     .input_2 {
+      display: block;
+      margin : 0 auto;
+      margin-top: 2px;
+     }
+
+ 
+
+
+    div#flashi {
+      text-align: center;
+      background-color:#00ff00;
+      color: #ffff;
+    }
+
+    div.wrapper h4 a {
+      margin-right: 80%;
+    }
+
+    div.wrapper h4 a.close {
+    padding-left:95%;
+  }
+
+    .sidebar ul {
+      font-size: 14px;
+    }
+  
+    .branding {
+      clear: both;
+    }
+  
+    footer.branding {
+      border-top: 2px solid #ccc;
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+  
+  
+  @media screen and (max-width: 600px) {
+    .wrapper {
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      width: auto;
+    }
+  
+  }
+  }
