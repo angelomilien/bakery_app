@@ -16,12 +16,21 @@ class SessionController < ApplicationController
     erb :'error'
   end
 
-  get '/existed' do
+  get '/existed/:user' do
     erb :existed_user
   end
 
-  get '/account' do
-    erb :'users/account', :layout => false
+  get '/account/:user/lakewood' do
+    if current_user
+      erb :'users/account', :layout => false
+    else
+      redirect_if_not_logged_in
+    end
+  end
+
+  get "/logout" do
+    session.clear
+    redirect "/"
   end
 
   post "/signup" do
@@ -30,7 +39,7 @@ class SessionController < ApplicationController
       redirect '/error'
     elsif user && user.authenticate(params[:password])
       puts params
-      redirect '/existed'
+      redirect "/existed/#{user.user_name}"
     else
       User.create(user_name: params[:username], password: params[:password])
       redirect '/'
@@ -42,7 +51,7 @@ class SessionController < ApplicationController
     user = User.find_by(user_name: params['username'])
     if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect "/account"
+			redirect "/account/#{user.user_name}/lakewood"
     else
       flash[:danger] = 'Invalid username/password'
       redirect '/login'
