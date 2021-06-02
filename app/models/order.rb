@@ -1,4 +1,4 @@
 class Order < ActiveRecord::Base
-    belongs_to :stops
+    belongs_to :stop
     has_many :breads
 end

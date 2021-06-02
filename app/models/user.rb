@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
     has_secure_password
-    belongs_to :bakeries
-    has_many :routes
+    belongs_to :bakery
+    has_many :stops
 end
 
 # class User < ActiveRecord::Base

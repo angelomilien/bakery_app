@@ -21,24 +21,30 @@ ActiveRecord::Schema.define(version: 2021_05_30_122350) do
     t.string "type"
     t.string "sale_form"
     t.decimal "price"
+    t.integer "bakery_id"
+    t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.string "name"
+    t.integer "stop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "route_number"
+    t.integer "bakery_id"
   end
 
   create_table "stops", force: :cascade do |t|
     t.string "name"
     t.string "adresse"
     t.string "phone_number"
+    t.integer "route_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_122350) do
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "password_digest"
+    t.integer "bakery_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

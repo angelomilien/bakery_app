@@ -22,6 +22,7 @@ class SessionController < ApplicationController
 
   get '/account/:user/lakewood' do
     if current_user
+      @routes = bakery.routes  #this is where I stopped now I will create a route controller
       erb :'users/account', :layout => false
     else
       redirect_if_not_logged_in
@@ -30,7 +31,7 @@ class SessionController < ApplicationController
 
   get "/logout" do
     session.clear
-    redirect "/"
+    redirect_if_not_logged_in
   end
 
   post "/signup" do

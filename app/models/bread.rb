@@ -1,4 +1,4 @@
-class Order < ActiveRecord::Base
-    belongs_to :bakeries
-    belongs_to :orders
+class Bread < ActiveRecord::Base
+    belongs_to :bakery
+    belongs_to :order
 end
