@@ -16,13 +16,12 @@
          <div>
             <h1>Welcome to Lakewood Bakery</h1>
             <h3>Select route by it's number</h3>
+            
             <div>
-               <% @routes.each do |route| %>
-               <button class="button_5">
+               <% @stops.each do |stop| %>
                   <a href="/lakewood/<%= route.id %>/stops">
-                     <%= route.route_number %>
+                     <%= stop.name %>
                   </a>
-               </button>
               <% end %>
             </div>
             
