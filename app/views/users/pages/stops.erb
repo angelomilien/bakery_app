@@ -18,11 +18,15 @@
             <h3>Select route by it's number</h3>
             
             <div>
-               <% @stops.each do |stop| %>
-                  <a href="/lakewood/<%= route.id %>/stops">
-                     <%= stop.name %>
-                  </a>
-              <% end %>
+                <ul>
+                <% @stops.each do |stop| %>
+                  <li>
+                    <a href="/stops/<%= stop.id %>"><br>
+                      <%= stop.name %> 
+                    </a>
+                  </li>
+                <% end %>
+                </ul>
             </div>
             
             <footer class="branding">
