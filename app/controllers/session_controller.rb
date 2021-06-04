@@ -20,15 +20,6 @@ class SessionController < ApplicationController
     erb :existed_user
   end
 
-  get '/account/lakewood' do
-    if current_user
-      @routes = bakery.routes
-      erb :'users/account', :layout => false
-    else
-      redirect_if_not_logged_in
-    end
-  end
-
   get "/logout" do
     session.clear
     redirect_if_not_logged_in
@@ -52,7 +43,7 @@ class SessionController < ApplicationController
     user = User.find_by(user_name: params['username'])
     if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect "/account/lakewood"
+			redirect "/routes"
     else
       flash[:danger] = 'Invalid username/password'
       redirect '/login'
