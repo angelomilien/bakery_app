@@ -12,21 +12,25 @@
   </head>
 
    <body>
-      <div class="wrapper">
+      <div class="wrapper"> 
          <div class="stops">
             <h1>Welcome to Lakewood Bakery</h1>
-            <h2>Route <%= @stops[0].route.route_number %> stops</h2>
             
             <div>
-                <ol>
-                <% @stops.each do |stop| %>
-                  <li>
-                    <a href="/stops/<%= stop.id %>">
-                      <%= stop.name %> 
-                    </a>
-                  </li><br>
-                <% end %>
-                </ol>
+                <%if @stops.size != 0%>
+                   <ol>
+                   <h2>Route <%= @stops[0].route.route_number %> stops</h2>
+                    <% @stops.each do |stop| %>
+                      <li>
+                        <a href="/stops/<%= stop.id %>">
+                          <%= stop.name %> 
+                        </a>
+                      </li><br>
+                    <% end %>
+                    </ol>
+                <%else%>
+                   <p><strong>No stops yet for route <%=@route.route_number %></strong></p>
+                <%end%>
             </div>
             
             <footer class="branding">
