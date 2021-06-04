@@ -1,8 +1,8 @@
 class LakewoodStopsController < ApplicationController
     
-    get '/lakewood/:route/stops' do
+    get '/:route/stops' do
         @route = Route.find(params[:route])
         @stops = @route.stops
-        erb :'users/pages/show', :layout => false
+        erb :'routes/show', :layout => false
     end
 end
