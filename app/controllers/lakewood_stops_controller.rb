@@ -10,7 +10,9 @@ class LakewoodStopsController < ApplicationController
         erb :'stops/new', layout: false
     end
 
-    post 'stops' do
+    get "account"
+
+    post 'stops/new' do
         
     end
 end
