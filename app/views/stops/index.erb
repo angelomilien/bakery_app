@@ -16,7 +16,8 @@
          <div>
             <h1>Welcome to Lakewood Bakery</h1>
            
-            <%= @route.route_number%>
+            <% @route.stops << @stop%>
+            <% @stop.user = current_user%>
             
             <footer class="branding">
                <small><strong>Big enough to serve, small enough to care</strong></small><br>
