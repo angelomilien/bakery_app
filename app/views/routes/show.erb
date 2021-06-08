@@ -40,6 +40,9 @@
 
                 <%else%>
                    <p><strong>You don't have stops yet in this route <%=@route.route_number %></strong></p>
+                   <form method="get" action="/stops/new" style="margin-right: 80%; margin-bottom: 10%">
+                        <button type="submit">Add a new stop</button>
+                   </form>
                 <%end%>
             </div>
             

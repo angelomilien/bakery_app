@@ -19,7 +19,7 @@
         <h4><a href="/logout">Logout</a><h4>
         <div>
             <div style="padding: 10% 10% 15% 10%; background-color: rgb(6,120,135);text-align: left;">
-               <form action="/stops" method="POST">
+               <form action="/stops/new" method="POST">
                   <label><strong>Route Number</strong></label>
                 
                   <br>
@@ -30,13 +30,13 @@
                   <h3 style="margin-bottom: 0%;">New Stop</h3><hr><br>
                   <label>Stop Name</label>
                   <br>
-                  <input type="text" name="stop[name]" id="stop_name"><br><br>
+                  <input type="text" name="stop[stop_name][name]" id="name"><br><br>
                   <label>Address</label>
                   <br>
-                  <input type="text" name="stop[address]" id="stop_address"><br><br>
+                  <input type="text" name="stop[stop_address][addresse]" id="address"><br><br>
                   <label>Phone number</label>
                   <br>
-                  <input type="text" name="stop[phone_number]" id="stop_phone_number"><br><br>
+                  <input type="text" name="stop[phone_number][phone_number]" id="phone_number"><br><br>
                   <br>
                 
                   <input type="submit" value="Add Stop">
