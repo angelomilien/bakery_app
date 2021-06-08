@@ -5,9 +5,15 @@ class LakewoodStopsController < ApplicationController
     end
 
     post '/stops/new' do
-        @route = Route.create(params[:route])
+        @route = Route.find_by(params[:route])
         @stop = Stop.create(params[:stop])
-        erb :'stops/index', :layout => false
+        @route.stops << @stop
+        @stop.user = current_user
+        erb :'users/show', :layout => false
+    end
+
+    get '/stop/:index' do
+       erb :'users/show/', :layout => false
     end
 end
 

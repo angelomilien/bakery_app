@@ -15,16 +15,11 @@
       <div class="wrapper">
          <div>
             <h1>Welcome to Lakewood Bakery</h1>
-           
-            <ol>
-                <% current_user.stops.each do |stop| %>
-                      <li>
-                        <a href="/">
-                          <%= stop.name %> 
-                        </a>
-                      </li><br>
-                    <% end %>
-            </ol>
+            <h3>Select route by it's number <%=@user.user_name %></h3>
+            <div>
+               
+               
+            </div>
             
             <footer class="branding">
                <small><strong>Big enough to serve, small enough to care</strong></small><br>

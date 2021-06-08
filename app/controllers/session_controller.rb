@@ -22,7 +22,6 @@ class SessionController < ApplicationController
 
   get '/:user_name/routes' do
     if current_user
-      @routes = Route.all
       @user = current_user
       erb :'users/account', :layout => false
     else
