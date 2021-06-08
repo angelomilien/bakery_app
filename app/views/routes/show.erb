@@ -17,7 +17,7 @@
             <h1>Welcome to Lakewood Bakery</h1>
             
             <div>
-                <%if @stops.size != 0%>
+                <%if @stops.size != 0 && logged_in? %>
                    <ol>
                    <h2>Route <%= @stops[0].route.route_number %> stops</h2>
                     <% @stops.each do |stop| %>
@@ -29,7 +29,7 @@
                     <% end %>
                     </ol>
                 <%else%>
-                   <p><strong>No stops yet for route <%=@route.route_number %></strong></p>
+                   <p><strong>You don't have stops yet in this route <%=@route.route_number %></strong></p>
                 <%end%>
             </div>
             
