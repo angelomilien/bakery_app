@@ -24,7 +24,7 @@
                <h4><a href="/logout">Logout</a><h4>
                 
                    <ol>
-                   <h2>Route <%= @stops[0].route.route_number %> stops</h2>
+                   <h2><%=current_user.user_name %> Route <%= @stops[0].route.route_number %> stops</h2><hr><br>
                     <% @stops.each do |stop| %>
                       <li>
                         <a href="/">
