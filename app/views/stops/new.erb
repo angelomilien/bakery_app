@@ -1,15 +1,54 @@
-<form action="/stops" method="POST">
-  <label>Name:</label>
 
-  <br>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-  <input type="text" name="owner[name]">
+    <title>Bakey App</title>
 
-  <h3>New Stop</h3>
-  <label>Stop Name: </label>
-  <br>
-  <input type="text" name="pet[name]" id="pet_name"></input>
-  <br><br>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <input type="submit" value="Add new Stop">
-</form>
+    <link rel="stylesheet" href="/stylesheets/app_3.css" />
+  </head>
+
+   <body>
+      <div class="wrapper">
+        <div>
+            <h1>Add a new stop to Lakewood Bakery</h1>
+            <div>
+               <form action="/stops" method="POST">
+                  <label>Route:</label>
+                
+                  <br>
+                
+                  <input type="text" name="route[route_number]">
+                  <br><br>
+                  
+                  <h3>New Stop</h3>
+                  <label>Stop Name: </label>
+                  <br>
+                  <input type="text" name="stop[name]" id="stop_name">
+                  <label>Address: </label>
+                  <br>
+                  <input type="text" name="stop[address]" id="stop_address">
+                  <br>
+                  <label>Phone number: </label>
+                  <br>
+                  <input type="text" name="stop[phone_number]" id="stop_address">
+                  
+                  <br>
+                  <br><br>
+                
+                  <input type="submit" value="Add Stop">
+                </form>
+            </div>
+            
+            <footer class="branding">
+               <small><strong>Big enough to serve, small enough to care</strong></small><br>
+               <small>&copy; 2021 <strong>Bakery App</strong></small>
+            </footer>
+        </div>
+      </div>  
+   </body> 
+<html>

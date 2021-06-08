@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     has_secure_password
+    # validates :user_name, :password, presence: true
     belongs_to :bakery
     has_many :stops
 end

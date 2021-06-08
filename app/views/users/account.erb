@@ -15,11 +15,15 @@
       <div class="wrapper">
          <div>
             <h1>Welcome to Lakewood Bakery</h1>
-            <h3>Select route by it's number</h3>
+            <h3>Select route by it's number <%=@user.user_name %></h3>
             <div>
+               
+               <form class="logout" method="post" action="/logout">
+                  <button type="submit">Log out</button>
+               </form>
                <% @routes.each do |route| %>
                <button class="button_5">
-                  <a href="/<%= route.id %>/stops">
+                  <a href="/route/<%= route.id %>/stops">
                      <%= route.route_number %>
                   </a>
                </button>

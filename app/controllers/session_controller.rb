@@ -20,18 +20,19 @@ class SessionController < ApplicationController
     erb :existed_user
   end
 
-  get '/:user/routes' do
+  get '/:user_name/routes' do
     if current_user
-      @routes = bakery.routes
+      @routes = Route.all
+      @user = current_user
       erb :'users/account', :layout => false
     else
-      redirect_if_not_logged_in
+      redirect "/"
     end
   end
 
-  get "/logout" do
+  post "/logout" do
     session.clear
-    redirect_if_not_logged_in
+    redirect "/"
   end
 
   post "/signup" do

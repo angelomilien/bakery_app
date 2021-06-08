@@ -13,19 +13,11 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
-      !!session[:user_id]
+      !!current_user
     end
 
     def current_user
-      User.find(session[:user_id])
-    end
-
-    def redirect_if_not_logged_in
-      redirect '/' unless logged_in?
-    end
-
-    def bakery
-      Bakery.find_or_create_by(name:"Lakewood Bakery", addresse: "107 Marine St, Farmingdale, NY 11735")
+      @user ||= User.find(session[:user_id])
     end
   end
 end
