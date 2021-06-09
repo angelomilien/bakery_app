@@ -15,12 +15,34 @@
       <div class="wrapper">
          <div>
             <h1>Welcome to Lakewood Bakery</h1>
-            <h3>Select route by it's number <%=@user.user_name %></h3>
             <div>
-               
-               <form class="logout" method="post" action="/logout" style="margin-right: 80%; margin-bottom: 10%">
+      
+               <form class="logout" method="get" action="/logout" style="margin-right: 80%; margin-bottom: 10%">
                   <button type="submit">Log out</button>
                </form>
+               <%if @user.stops.size == 0%>
+                  <h3>you don't have any stop yet <%=@user.user_name %></h3>
+               <%else%>
+                    <h3><%=@user.user_name %> stops</h3><hr>
+      
+                        <ol>
+                           <% @user.stops.each do |stop| %>
+                                   <a href="/index/<%=stop.id%>">
+                                      <li style="width: 10%">
+                                         <%= stop.name %>
+                                      </li><br>
+                                   </a>
+                           <% end %>
+                        </ol>
+               <%end%><br>
+
+
+
+               <form method="get" action="/stops/new" style="margin-right: 80%; margin-bottom: 10%">
+                        <button type="submit">Add a new stop</button>
+               </form>
+               
+              
             </div>
             
             <footer class="branding">

@@ -20,9 +20,8 @@ class SessionController < ApplicationController
     erb :existed_user
   end
 
-  get '/:user_name/routes' do
-    if current_user
-      @routes = Route.all
+  get '/account/:user_name' do
+    if logged_in?
       @user = current_user
       erb :'users/account', :layout => false
     else
@@ -30,7 +29,7 @@ class SessionController < ApplicationController
     end
   end
 
-  post "/logout" do
+  get "/logout" do
     session.clear
     redirect "/"
   end
@@ -40,7 +39,6 @@ class SessionController < ApplicationController
     if params[:username] == "" || params[:password] == ""
       redirect '/error'
     elsif user && user.authenticate(params[:password])
-      puts params
       redirect "/existed/#{user.user_name}"
     else
       User.create(user_name: params[:username], password: params[:password])
@@ -52,7 +50,7 @@ class SessionController < ApplicationController
     user = User.find_by(user_name: params['username'])
     if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect "/#{user.user_name}/routes"
+			redirect "account/#{user.user_name}"
     else
       flash[:danger] = 'Invalid username/password'
       redirect '/login'
