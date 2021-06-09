@@ -21,13 +21,6 @@
                <form class="logout" method="post" action="/logout" style="margin-right: 80%; margin-bottom: 10%">
                   <button type="submit">Log out</button>
                </form>
-               <% @routes.each do |route| %>
-               <button class="button_5">
-                  <a href="/route/<%= route.id %>/stops">
-                     <%= route.route_number %>
-                  </a>
-               </button>
-              <% end %>
             </div>
             
             <footer class="branding">
