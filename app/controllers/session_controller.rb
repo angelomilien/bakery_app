@@ -21,7 +21,7 @@ class SessionController < ApplicationController
   end
 
   get '/account/:user_name' do
-    if !logged_in?
+    if logged_in?
       @user = current_user
       erb :'users/account', :layout => false
     else
@@ -50,7 +50,7 @@ class SessionController < ApplicationController
     user = User.find_by(user_name: params['username'])
     if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect "acc ount/#{user.user_name}"
+			redirect "/account/#{user.user_name}"
     else
       flash[:danger] = 'Invalid username/password'
       redirect '/login'

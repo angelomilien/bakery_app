@@ -4,7 +4,7 @@ class LakewoodStopsController < ApplicationController
         erb :'stops/new', layout: false
     end
 
-    post '/stops/new' do
+    post '/stops' do
         if !logged_in?
             redirect "/"
         end
@@ -24,17 +24,18 @@ class LakewoodStopsController < ApplicationController
         erb :'users/show', :layout => false
     end
 
-    get '/edit/:user_id/:stop_id' do
-        "hello"
+    get '/edit/stop/:stop_id' do
+        erb :'stops/edit'
     end
 
 
-#   patch "/articles/:id" do
-#     @article = Article.find(params[:id])
-#     params[:article]
-#     @article.update(params[:article])
-#     redirect to "/articles/#{ @article.id }"
-#   end
+  patch "/edit/:id" do
+    # @article = Article.find(params[:id])
+    # params[:article]
+    # @article.update(params[:article])
+    # redirect to "/articles/#{ @article.id }"
+    "hello"
+  end
 
 #   delete "/articles/:id" do
 #     Article.destroy(params[:id])
