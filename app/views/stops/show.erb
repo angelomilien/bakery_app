@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+    <title>Bakery App</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/stylesheets/app_1.css" />
+  </head>
+
+   <body>
+      <div class="wrapper">
+         <div>
+            <h1>Welcome to Lakewood Bakery</h1>
+            <h3><%=@user.user_name %> stop</h3>
+
+            <h4><a href="/account/<%=@user.user_name%>">home</a><h4>
+            <h4><a href="/logout">Logout</a><h4><br><hr>
+
+            <div style="text-align: left;">
+               <p><strong>Name: </strong> <%=@stop.name%></p>
+               <p><strong>Address: </strong><%=@stop.adresse%> </p>
+               <p><strong>Phone number: </strong><%=@stop.phone_number%></p>
+               <p><strong>Route: </strong><%=@stop.route.route_number%></p>
+               <p><strong>Date: </strong><%=@stop.created_at%></p>  
+            </div>
+             
+            <div>
+               <form method="get" action="/edit/stop/<%=@stop.id%>">
+                  <button type="submit"  style="margin-right: 80%; margin-bottom: 2%">Edit</button>
+               </form>
+            
+               <form method="post" action="/<%=%>">
+                  <br/>
+                  <input type="hidden" name="_method" value="delete" />
+                  <input type="submit" value="Delete" style="margin-right: 80%;"/>
+               </form>
+            </div>
+
+            <footer class="branding">
+               <small><strong>Big enough to serve, small enough to care</strong></small><br>
+               <small>&copy; 2021 <strong>Bakery App</strong></small>
+            </footer>
+         </div>
+      </div>  
+   </body> 
+<html>

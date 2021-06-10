@@ -21,7 +21,7 @@ class LakewoodStopsController < ApplicationController
         end
         @user = current_user
         @stop = Stop.find(params[:stop])
-        erb :'users/show', :layout => false
+        erb :'stops/show', :layout => false
     end
 
     get '/edit/stop/:stop_id' do
