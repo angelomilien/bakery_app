@@ -15,7 +15,7 @@ class LakewoodStopsController < ApplicationController
         erb :'users/show', :layout => false
     end
 
-    get '/index/:stop' do
+    get '/stops/:stop' do
         if !logged_in?
            redirect "/"
         end
