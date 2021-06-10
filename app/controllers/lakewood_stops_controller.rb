@@ -4,6 +4,11 @@ class LakewoodStopsController < ApplicationController
         erb :'stops/new', layout: false
     end
 
+    get '/stops' do
+        @user = current_user
+        erb :'stops/index', :layout => false
+     end
+
     post '/stops' do
         if !logged_in?
             redirect "/"
@@ -15,18 +20,18 @@ class LakewoodStopsController < ApplicationController
         erb :'users/show', :layout => false
     end
 
-    get '/stops/:stop' do
+    get '/stops/:stop_id' do
         if !logged_in?
            redirect "/"
         end
         @user = current_user
-        @stop = Stop.find(params[:stop])
+        @stop = Stop.find(params[:stop_id])
         erb :'stops/show', :layout => false
     end
 
-    get '/edit/stop/:stop_id' do
-        erb :'stops/edit'
-    end
+    # get '/edit/stop/:stop_id' do
+    #     erb :'stops/edit'
+    # end
 
 
   patch "/edit/:id" do
