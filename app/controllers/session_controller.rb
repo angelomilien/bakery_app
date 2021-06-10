@@ -20,15 +20,6 @@ class SessionController < ApplicationController
     erb :existed_user
   end
 
-  # get '/account/:user_name' do
-  #   if logged_in?
-  #     @user = current_user
-  #     erb :'users/account', :layout => false
-  #   else
-  #     redirect "/"
-  #   end
-  # end
-
   get "/logout" do
     session.clear
     redirect "/"

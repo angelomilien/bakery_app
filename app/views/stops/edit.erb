@@ -1,18 +1,3 @@
-<form action="/articles/<%= @article.id %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <ul>
-    <li>
-      <label for="title">Title</label>
-      <input id="title" type="text" name="article[title]" value="<%= @article.title %>" />
-    </li>
-    <li>
-      <label for="content">Content</label>
-      <input id="content" type="text" name="article[content]"  value="<%= @article.content %>" />
-    </li>
-  </ul>
-  <input type="submit" />
-</form>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,14 +19,24 @@
 
             <h4><a href="/account/<%=@user.user_name%>">home</a><h4>
             <h4><a href="/logout">Logout</a><h4><br><hr>
-
-            <div style="text-align: left;">
-               <p><strong>Name: </strong> <%=@stop.name%></p>
-               <p><strong>Address: </strong><%=@stop.adresse%> </p>
-               <p><strong>Phone number: </strong><%=@stop.phone_number%></p>
-               <p><strong>Route: </strong><%=@stop.route.route_number%></p>
-               <p><strong>Date: </strong><%=@stop.created_at%></p>  
+            
+            <div>
+                <form action="//<%=%>" method="post">
+                    <input type="hidden" name="_method" value="patch">
+                    <ul>
+                      <li>
+                        <label for="title">Title</label>
+                        <input id="title" type="text" name="article[title]" value="<%= @article.title %>" />
+                      </li>
+                      <li>
+                        <label for="content">Content</label>
+                        <input id="content" type="text" name="article[content]"  value="<%= @article.content %>" />
+                      </li>
+                    </ul>
+                    <input type="submit" />
+                </form>
             </div>
+
             <footer class="branding">
                <small><strong>Big enough to serve, small enough to care</strong></small><br>
                <small>&copy; 2021 <strong>Bakery App</strong></small>

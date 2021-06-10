@@ -17,7 +17,7 @@ class LakewoodStopsController < ApplicationController
         @stop = Stop.create(params[:stop])
         @route.stops << @stop
         current_user.stops << @stop
-        erb :'users/show', :layout => false
+        erb :'stops/show', :layout => false
     end
 
     get '/stops/:stop_id' do
@@ -29,9 +29,10 @@ class LakewoodStopsController < ApplicationController
         erb :'stops/show', :layout => false
     end
 
-    # get '/edit/stop/:stop_id' do
-    #     erb :'stops/edit'
-    # end
+    get '/stops/:stop_id/edit' do
+        @user = current_user 
+        erb :'stops/edit', :layout => false
+    end
 
 
   patch "/edit/:id" do
