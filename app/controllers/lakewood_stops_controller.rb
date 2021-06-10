@@ -30,21 +30,21 @@ class LakewoodStopsController < ApplicationController
     end
 
     get '/stops/:stop_id/edit' do
-        @user = current_user 
+        @user = current_user
+        @stop = Stop.find(params[:stop_id])
         erb :'stops/edit', :layout => false
     end
 
 
-  patch "/edit/:id" do
-    # @article = Article.find(params[:id])
-    # params[:article]
-    # @article.update(params[:article])
-    # redirect to "/articles/#{ @article.id }"
-    "hello"
+  patch "/stops/:id" do
+    @user = current_user
+    @stop = Stop.find(params[:id])
+    @stop.update(params[:stop])
+    redirect to "/stops/#{ @stop.id }"
   end
 
-#   delete "/articles/:id" do
-#     Article.destroy(params[:id])
-#     redirect to "/articles"
-#   end
+  delete "/stops/:id" do
+    Article.destroy(params[:id])
+    redirect to "/articles"
+  end
 end

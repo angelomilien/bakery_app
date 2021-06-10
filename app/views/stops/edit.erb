@@ -20,19 +20,24 @@
             <h4><a href="/account/<%=@user.user_name%>">home</a><h4>
             <h4><a href="/logout">Logout</a><h4><br><hr>
             
-            <div>
-                <form action="//<%=%>" method="post">
+            <div style="text-align: left">
+
+                <h4>Updating <%=@stop.name%><h4><br>
+                <form action="/stops/<%=@stop.id%>" method="post">
                     <input type="hidden" name="_method" value="patch">
-                    <ul>
-                      <li>
-                        <label for="title">Title</label>
-                        <input id="title" type="text" name="article[title]" value="<%= @article.title %>" />
-                      </li>
-                      <li>
-                        <label for="content">Content</label>
-                        <input id="content" type="text" name="article[content]"  value="<%= @article.content %>" />
-                      </li>
-                    </ul>
+                    
+                    <label for="title">Name: </label>
+                    <input id="title" type="text" name="stop[name]" value="<%= @stop.name%>"/><br><br>
+                    
+                    <label for="content">Address: </label>
+                    <input id="content" type="text" name="stop[adresse]"  value="<%= @stop.adresse %>"/><br><br>
+
+                    <label for="content">Phone number: </label>
+                    <input id="content" type="text" name="stop[phone_number]"  value="<%= @stop.phone_number%>"/><br><br>
+
+                    <label for="content">Route: </label>
+                    <input id="content" type="text" name="stop[route]"  value="<%= @stop.route %>"/><br><br><br>
+                     
                     <input type="submit" />
                 </form>
             </div>
