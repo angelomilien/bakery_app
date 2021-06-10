@@ -33,7 +33,7 @@
                   <button type="submit"  style="margin-right: 80%; margin-bottom: 2%">Edit</button>
                </form>
             
-               <form method="post" action="/<%=%>">
+               <form method="post" action="/stops/<%= @stop.id %>">
                   <br/>
                   <input type="hidden" name="_method" value="delete" />
                   <input type="submit" value="Delete" style="margin-right: 80%;"/>

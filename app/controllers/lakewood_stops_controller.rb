@@ -44,7 +44,11 @@ class LakewoodStopsController < ApplicationController
   end
 
   delete "/stops/:id" do
-    Article.destroy(params[:id])
-    redirect to "/articles"
+    Stop.destroy(params[:id])
+    redirect to "/stops"
   end
 end
+
+
+# <label for="content">Route: </label>
+# <input id="content" type="text" name="stop[route]"  value="<%= @stop.route.route_number %>"/><br><br><br>
