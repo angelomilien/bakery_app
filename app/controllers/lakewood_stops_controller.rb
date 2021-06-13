@@ -1,14 +1,13 @@
 class LakewoodStopsController < ApplicationController
 
     get "/stops/new" do
+      redirect_if_logged_in
       erb :'stops/new', layout: false
     end
 
     get '/stops' do
         
-      if !logged_in?
-        redirect "/"
-      end
+      redirect_if_logged_in
       @user = current_user
       erb :'stops/index', :layout => false
     end
@@ -18,15 +17,16 @@ class LakewoodStopsController < ApplicationController
     end
 
     post '/stops' do
-        if !logged_in?
-            redirect "/"
-        elsif params[:route][:route_number] == "" || params[:stop][:name] == "" || params[:stop][:adresse] == "" || params[:stop][:phone_number] == ""
+        redirect_if_logged_in
+
+        else params[:route][:route_number] == "" || params[:stop][:name] == "" || params[:stop][:adresse] == "" || params[:stop][:phone_number] == ""
           redirect 'edit/error'
         end
         @route = Route.find_or_create_by(params[:route])
-        @stop = Stop.create(params[:stop])
+        @stop = Stop.new(params[:stop])
         @route.stops << @stop
-        current_user.stops << @stop
+        @stop.user_id = session[:user_id]
+        @stop.save
         erb :'stops/show', :layout => false
     end
 
@@ -40,23 +40,44 @@ class LakewoodStopsController < ApplicationController
     end
 
     get '/stops/:stop_id/edit' do
-        @user = current_user
-        @stop = Stop.find(params[:stop_id])
-        erb :'stops/edit', :layout => false
+      if !logged_in?
+        redirect "/"
+      end 
+      @user = current_user
+      @stop = Stop.find(params[:stop_id])
+      redirect_if_not_authorized
+      erb :'stops/edit', :layout => false
     end
 
 
   patch "/stops/:id" do
+    if !logged_in?
+      redirect "/"
+    end
     @user = current_user
     @stop = Stop.find(params[:id])
+    redirect_if_not_authorized
     @stop.update(params[:stop])
     redirect to "/stops/#{ @stop.id }"
   end
 
   delete "/stops/:id" do
+    if !logged_in?
+      redirect "/"
+    end
+    redirect_if_not_authorized
     Stop.destroy(params[:id])
     redirect to "/stops"
   end
+
+  private
+
+  def redirect_if_not_authorized
+    if @stop.user != current_user
+      redirect "/stops "
+    end 
+  end
+  
 end
 
 

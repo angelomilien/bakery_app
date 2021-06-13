@@ -27,9 +27,9 @@
                <p><strong>Route: </strong><%=@stop.route.route_number%></p>
                <p><strong>Date: </strong><%=@stop.created_at%></p>  
             </div>
-             
+            <%if @stop.user_id == current_user.id%> 
             <div>
-               <form method="get" action="/stops/<%=@stop.id%>/edit">
+                   <form method="get" action="/stops/<%=@stop.id%>/edit">
                   <button type="submit"  style="margin-right: 80%; margin-bottom: 2%">Edit</button>
                </form>
             
@@ -39,6 +39,7 @@
                   <input type="submit" value="Delete" style="margin-right: 80%;"/>
                </form>
             </div>
+             <%end%>
 
             <footer class="branding">
                <small><strong>Big enough to serve, small enough to care</strong></small><br>

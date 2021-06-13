@@ -17,9 +17,14 @@
             <h1>Welcome to Lakewood Bakery</h1>
             <div>
       
-               <form class="logout" method="get" action="/logout" style="margin-right: 80%; margin-bottom: 10%">
+               <form class="logout" method="get" action="/logout" style="margin-right: 80%; margin-bottom: 3%">
                   <button type="submit">Log out</button>
                </form>
+
+               <form class="logout" method="get" action="/account/<%=@user.user_name%>" style="margin-right: 80%; margin-bottom: 10%;">
+                     <button type="submit">Home </button>
+               </form>
+
                <%if @user.stops.size == 0%>
                   <h3>you don't have any stop yet <%=@user.user_name %></h3>
                <%else%>
