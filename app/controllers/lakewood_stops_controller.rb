@@ -1,13 +1,13 @@
 class LakewoodStopsController < ApplicationController
 
     get "/stops/new" do
-      redirect_if_logged_in
+      redirect_if_not_logged_in
       erb :'stops/new', layout: false
     end
 
     get '/stops' do
         
-      redirect_if_logged_in
+      redirect_if_not_logged_in
       @user = current_user
       erb :'stops/index', :layout => false
     end
@@ -17,11 +17,12 @@ class LakewoodStopsController < ApplicationController
     end
 
     post '/stops' do
-        redirect_if_logged_in
+        redirect_if_not_logged_in
 
-        else params[:route][:route_number] == "" || params[:stop][:name] == "" || params[:stop][:adresse] == "" || params[:stop][:phone_number] == ""
+        if params[:route][:route_number] == "" || params[:stop][:name] == "" || params[:stop][:adresse] == "" || params[:stop][:phone_number] == ""
           redirect 'edit/error'
         end
+        @user = current_user
         @route = Route.find_or_create_by(params[:route])
         @stop = Stop.new(params[:stop])
         @route.stops << @stop
