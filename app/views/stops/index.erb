@@ -21,17 +21,17 @@
                   <button type="submit">Log out</button>
                </form>
 
-               <form class="logout" method="get" action="/account/<%=@user.user_name%>" style="margin-right: 80%; margin-bottom: 10%;">
+               <form class="logout" method="get" action="/account/<%=current_user.user_name%>" style="margin-right: 80%; margin-bottom: 10%;">
                      <button type="submit">Home </button>
                </form>
 
-               <%if @user.stops.size == 0%>
-                  <h3>you don't have any stop yet <%=@user.user_name %></h3>
+               <%if current_user.stops.size == 0%>
+                  <h3>you don't have any stop yet <%=current_user.user_name %></h3>
                <%else%>
-                    <h3><%=@user.user_name %> stops</h3><hr>
+                    <h3><%=current_user.user_name %> stops</h3><hr>
       
                         <ol>
-                           <% @user.stops.each do |stop| %>
+                           <% current_user.stops.each do |stop| %>
                                    <a href="/stops/<%=stop.id%>">
                                       <li style="width: 30%">
                                          <%= stop.name %>

@@ -15,9 +15,9 @@
       <div class="wrapper">
          <div>
             <h1>Welcome to Lakewood Bakery</h1>
-            <h3><%=@user.user_name %> stop</h3>
+            <h3><%=current_user.user_name %> stop</h3>
 
-            <h4><a href="/account/<%=@user.user_name%>">home</a><h4>
+            <h4><a href="/account/<%=current_user.user_name%>">home</a><h4>
             <h4><a href="/logout">Logout</a><h4><br><hr>
 
             <div style="text-align: left;">

@@ -8,7 +8,6 @@ class LakewoodStopsController < ApplicationController
     get '/stops' do
         
       redirect_if_not_logged_in
-      @user = current_user
       erb :'stops/index', :layout => false
     end
 
@@ -22,20 +21,19 @@ class LakewoodStopsController < ApplicationController
         if params[:route][:route_number] == "" || params[:stop][:name] == "" || params[:stop][:adresse] == "" || params[:stop][:phone_number] == ""
           redirect 'edit/error'
         end
-        @user = current_user
+
         @route = Route.find_or_create_by(params[:route])
         @stop = Stop.new(params[:stop])
         @route.stops << @stop
         @stop.user_id = session[:user_id]
         @stop.save
-        erb :'stops/show', :layout => false
+        redirect  "stops/#{@stop.id}"
     end
 
     get '/stops/:stop_id' do
         if !logged_in?
            redirect "/"
         end
-        @user = current_user
         @stop = Stop.find(params[:stop_id])
         erb :'stops/show', :layout => false
     end
@@ -44,7 +42,6 @@ class LakewoodStopsController < ApplicationController
       if !logged_in?
         redirect "/"
       end 
-      @user = current_user
       @stop = Stop.find(params[:stop_id])
       redirect_if_not_authorized
       erb :'stops/edit', :layout => false
@@ -55,27 +52,27 @@ class LakewoodStopsController < ApplicationController
     if !logged_in?
       redirect "/"
     end
-    @user = current_user
     @stop = Stop.find(params[:id])
     redirect_if_not_authorized
     @stop.update(params[:stop])
-    redirect to "/stops/#{ @stop.id }"
+    redirect "/stops/#{ @stop.id }"
   end
 
   delete "/stops/:id" do
     if !logged_in?
       redirect "/"
     end
+    @stop = Stop.find(params[:id])
     redirect_if_not_authorized
-    Stop.destroy(params[:id])
-    redirect to "/stops"
+    @stop.destroy
+    redirect "/stops"
   end
 
   private
 
   def redirect_if_not_authorized
     if @stop.user != current_user
-      redirect "/stops "
+      redirect "/stops"
     end 
   end
   
